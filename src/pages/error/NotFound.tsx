@@ -1,5 +1,4 @@
 import React from 'react';
-import { Typography } from '@mui/material';
 import { ROOT } from 'navigation/CONSTANT';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ const NotFound = (props: Props) => {
       <Link to={ROOT}>
         <h1>Home</h1>
       </Link>
-      <Typography variant="h2">404: page not found!</Typography>
+      <h2>404: page not found!</h2>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   decrementCounting,
@@ -25,9 +24,9 @@ const HomePage = (props: Props) => {
   return (
     <div style={{}}>
       <h1>This is Home Page</h1>
-      <Button onClick={increment}>Increment</Button>
+      <button onClick={increment}>Increment</button>
       <h2>{CountingState.counting}</h2>
-      <Button onClick={decrement}>Decrement</Button>
+      <button onClick={decrement}>Decrement</button>
     </div>
   );
 };

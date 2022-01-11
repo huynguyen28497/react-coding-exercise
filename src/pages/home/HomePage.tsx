@@ -1,10 +1,11 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCatFact } from "redux/actions/cat.actions";
 import {
   decrementCounting,
   incrementCounting,
-} from 'redux/actions/counting.actions';
-import { ICountingState } from 'redux/reducers/counting.reducers';
+} from "redux/actions/counting.actions";
+import { ICountingState } from "redux/reducers/counting.reducers";
 
 interface Props {}
 
@@ -20,6 +21,19 @@ const HomePage = (props: Props) => {
   const decrement = () => {
     dispatch(decrementCounting(10));
   };
+
+  const load = async () => {
+    try {
+      const res = await getCatFact(dispatch);
+      console.log("🚀 ~ file: HomePage.tsx ~ line 28 ~ load ~ res", res);
+    } catch (error) {
+      console.log("🚀 ~ file: HomePage.tsx ~ line 28 ~ load ~ error", error);
+    }
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
 
   return (
     <div style={{}}>

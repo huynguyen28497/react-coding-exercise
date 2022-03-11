@@ -1,46 +1,19 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCatFact } from "redux/actions/cat.actions";
-import {
-  decrementCounting,
-  incrementCounting,
-} from "redux/actions/counting.actions";
-import { ICountingState } from "redux/reducers/counting.reducers";
+import { Box } from "@mui/material";
+import AppBarCustom from "components/common/AppBarCustom";
+import NavTab from "components/common/NavTab";
+import UniversityList from "components/UniversityList/UniversityList";
+import React from "react";
 
 interface Props {}
 
 const HomePage = (props: Props) => {
-  const CountingState: any = useSelector<ICountingState>(
-    (state) => state.counting
-  );
-  const dispatch = useDispatch();
-
-  const increment = () => {
-    dispatch(incrementCounting(20));
-  };
-  const decrement = () => {
-    dispatch(decrementCounting(10));
-  };
-
-  const load = async () => {
-    try {
-      const res = await getCatFact(dispatch);
-      console.log("🚀 ~ file: HomePage.tsx ~ line 28 ~ load ~ res", res);
-    } catch (error) {
-      console.log("🚀 ~ file: HomePage.tsx ~ line 28 ~ load ~ error", error);
-    }
-  };
-
-  useEffect(() => {
-    load();
-  }, []);
-
   return (
-    <div style={{}}>
-      <h1>This is Home Page</h1>
-      <button onClick={increment}>Increment</button>
-      <h2>{CountingState.counting}</h2>
-      <button onClick={decrement}>Decrement</button>
+    <div>
+      <AppBarCustom/>
+      <Box sx={{ display: "flex", paddingTop: '8vh' }}>
+        <NavTab />
+        <UniversityList />
+      </Box>
     </div>
   );
 };

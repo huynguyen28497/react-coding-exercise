@@ -43,7 +43,7 @@ export default function MainLayout({ children = null as any }) {
         handleOpen={handleOpen}
       />
       <NavTab drawerWidth={drawerWidth} open={open} />
-      <Box component="main">
+      <Box component="main" width="100%">
         <DrawerHeader />
         {children}
       </Box>

@@ -12,6 +12,7 @@ import {
   SelectChangeEvent,
   TablePagination,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { plus, search, tool_icon } from "assets";
 import ModalDetailUniversity from "components/common/Modal/ModalDetailUniversity";
@@ -42,6 +43,7 @@ const UniversityList = () => {
   const [openModalEdit, setOpenModalEdit] = useState(false);
   //Create, Edit
   const [mode, setMode] = useState("Create");
+  const matches = useMediaQuery("(max-width:900px)");
 
   const openMenu = Boolean(anchorEl);
   const dispatch = useDispatch();
@@ -170,7 +172,7 @@ const UniversityList = () => {
   }, []);
 
   return (
-    <Box className="root" minWidth={"85vw"}>
+    <Box className="root">
       <ModalUniversity
         mode={mode}
         item={selectedItem}
@@ -188,7 +190,7 @@ const UniversityList = () => {
       />
       <Container
         sx={{
-          minHeight: "91vh",
+          minHeight: "87vh",
           paddingBottom: '5vh'
         }}
       >

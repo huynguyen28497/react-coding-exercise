@@ -7,7 +7,6 @@ import {
   TableBody,
   Table as MUITable,
   Checkbox,
-  Tab,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./style.css";
@@ -24,8 +23,8 @@ const Table = ({
   checkbox = false,
 }) => {
   return (
-    <TableContainer component={Paper}>
-      <MUITable sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer>
+      <MUITable aria-label="simple table">
         <TableHead>
           <TableRow>
             {checkbox && (

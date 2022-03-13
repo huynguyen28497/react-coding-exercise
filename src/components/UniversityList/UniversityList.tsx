@@ -50,7 +50,7 @@ const UniversityList = () => {
     setOpenModalView(true);
   };
   const handleEdit = () => {
-    setMode('Edit');
+    setMode("Edit");
     setOpenModalEdit(true);
   };
   const handleDelete = async () => {
@@ -170,7 +170,7 @@ const UniversityList = () => {
   }, []);
 
   return (
-    <Box className="root" minWidth={"84vw"}>
+    <Box className="root" minWidth={"85vw"}>
       <ModalUniversity
         mode={mode}
         item={selectedItem}
@@ -183,6 +183,8 @@ const UniversityList = () => {
         open={openModalView}
         setOpen={setOpenModalView}
         item={selectedItem}
+        editItem={handleEdit}
+        deleteItem={handleDelete}
       />
       <Container>
         <Menu
@@ -206,64 +208,72 @@ const UniversityList = () => {
               setMode("Create");
               setOpenModalEdit(true);
             }}
-            style={{ textTransform: "none" }}
+            style={{ textTransform: "none", backgroundColor: "#5048E5" }}
             startIcon={<img style={{ width: 12, height: 12 }} src={plus} />}
           >
             Add
           </Button>
         </Box>
-        <Box display="flex" style={{ backgroundColor: "#fff" }} padding="32px">
-          <OutlinedInput
-            placeholder="Input text and press Enter"
-            fullWidth
-            startAdornment={
-              <img
-                style={{ paddingRight: 10, width: 18, height: 18 }}
-                src={search}
-              />
-            }
-            onChange={(e: any) => setSearchText(e.target.value)}
-            onKeyDown={keyPress}
-          />
-          <Box paddingX={"5px"}>
-            <FormControl sx={{ minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-helper-label">
-                Country
-              </InputLabel>
-              <Select
-                // value={age}
-                label="Country"
-                onChange={handleChangeCountry}
-              >
-                {countries.map((c) => (
-                  <MenuItem value={c.name}>{c.name}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+        <Box borderRadius={"8px"} style={{ backgroundColor: "#fff" }}>
+          <Box display="flex" padding="32px">
+            <OutlinedInput
+              placeholder="Input text and press Enter"
+              fullWidth
+              startAdornment={
+                <img
+                  style={{ marginRight: 10, width: 18, height: 18 }}
+                  src={search}
+                />
+              }
+              onChange={(e: any) => setSearchText(e.target.value)}
+              onKeyDown={keyPress}
+            />
+            <Box paddingX={"5px"}>
+              <FormControl sx={{ minWidth: "15vw" }}>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Country
+                </InputLabel>
+                <Select
+                  // value={age}
+                  label="Country"
+                  onChange={handleChangeCountry}
+                >
+                  {countries.map((c) => (
+                    <MenuItem value={c.name}>{c.name}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+            <Box paddingX={"5px"}>
+              <FormControl sx={{ minWidth: "15vw" }}>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Sort
+                </InputLabel>
+                <Select
+                  // value={age}
+                  label="Sort"
+                  // onChange={handleChange}
+                >
+                  <MenuItem value={10}>Not available</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
           </Box>
-          <Box paddingX={"5px"}>
-            <FormControl sx={{ minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-helper-label">Sort</InputLabel>
-              <Select
-                // value={age}
-                label="Sort"
-                // onChange={handleChange}
-              >
-                <MenuItem value={10}>Not available now</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        </Box>
-        <Table columns={UniversityColumns} dataSource={items} checkbox={true} />
-        <Box style={{ backgroundColor: "#fff" }}>
-          <TablePagination
-            component="div"
-            count={count}
-            page={page}
-            onPageChange={handleChangePage}
-            rowsPerPage={limit}
-            onRowsPerPageChange={handleChangeRowsPerPage}
+          <Table
+            columns={UniversityColumns}
+            dataSource={items}
+            checkbox={true}
           />
+          <Box>
+            <TablePagination
+              component="div"
+              count={count}
+              page={page}
+              onPageChange={handleChangePage}
+              rowsPerPage={limit}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </Box>
         </Box>
       </Container>
     </Box>

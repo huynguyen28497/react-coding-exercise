@@ -1,18 +1,13 @@
 import {
   Box,
   Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Typography,
 } from "@mui/material";
 import { house_icon, logo } from "assets";
-import React from "react";
+import React, { useEffect } from "react";
 
-const NavTab = () => {
-  const drawerWidth = '15vw';
-  return (
+const NavTab = ({ open = true, drawerWidth = "15vw" }) => {
+  return open ? (
     <Drawer
       sx={{
         width: drawerWidth,
@@ -30,19 +25,23 @@ const NavTab = () => {
       <Box paddingTop={"28px"} paddingBottom={"28px"} paddingLeft={"24px"}>
         <img style={{ width: 42, height: 33 }} src={logo} />
       </Box>
-      <Typography paddingLeft={1} color={"#9CA3AF"}>
+      <Typography paddingLeft={'14px'} color={"#9CA3AF"}>
         General
       </Typography>
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <img style={{ width: 16, height: 16 }} src={house_icon} />
-          </ListItemIcon>
-          <ListItemText primary={"Main"} />
-        </ListItem>
-      </List>
+      <Box marginX={"16px"} marginY={"4px"}>
+        <Box
+          display={'flex'}
+          alignItems="center"
+          paddingX={'12px'}
+          borderRadius={"8px"}
+          style={{ background: "rgba(255, 255, 255, 0.08)" }}
+        >
+          <img style={{ width: 16, height: 16, marginRight: 8 }} src={house_icon} />
+          <p style={{ color: '#10B981', fontWeight: 600 }} >Main</p>
+        </Box>
+      </Box>
     </Drawer>
-  );
+  ) : null;
 };
 
 export default NavTab;

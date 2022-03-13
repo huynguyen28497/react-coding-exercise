@@ -123,7 +123,7 @@ const UniversityList = () => {
 
   const handleChangeCountry = (e: SelectChangeEvent) => {
     setCountry(e.target.value ?? "");
-    load(limit, 1, searchText, country);
+    load(limit, 1, searchText, e.target.value);
   };
 
   const keyPress = (e: any) => {
@@ -186,7 +186,12 @@ const UniversityList = () => {
         editItem={handleEdit}
         deleteItem={handleDelete}
       />
-      <Container>
+      <Container
+        sx={{
+          minHeight: "91vh",
+          paddingBottom: '5vh'
+        }}
+      >
         <Menu
           anchorEl={anchorEl}
           id="basic-menu"
